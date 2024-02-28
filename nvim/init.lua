@@ -1,3 +1,31 @@
+-- Define a function to execute the required actions
+function process_file()
+	local filetype = vim.bo.filetype
+
+	if filetype == "templ" then
+		local bufnr = vim.api.nvim_get_current_buf()
+		local filename = vim.api.nvim_buf_get_name(bufnr)
+		local cmd = "templ fmt " .. vim.fn.shellescape(filename)
+
+		vim.fn.jobstart(cmd, {
+			on_exit = function()
+				-- Reload the buffer only if it's still the current buffer
+				if vim.api.nvim_get_current_buf() == bufnr then
+					vim.cmd('e!')
+				end
+			end,
+		})
+		return
+	end
+
+	vim.cmd('silent! normal gg=G``') -- Format the entire buffer
+	if filetype == "go" then
+		vim.cmd('silent! %!gofmt') -- Run gofmt on the entire buffer
+		vim.cmd('silent! %!goimports') -- Run goimports on the entire buffer
+	end
+end
+
+
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
@@ -8,9 +36,9 @@ opt.relativenumber = true -- show relative line numbers
 opt.number = true -- shows absolute line number on cursor line (when relative number is on)
 
 -- tabs & indentation
-opt.tabstop = 7 -- 7 spaces for tabs (prettier default)
-opt.softtabstop= 7 --  Number of spaces for a TAB in insert mode
-opt.shiftwidth = 7 -- 4 spaces for indent width
+opt.tabstop = 4 -- 7 spaces for tabs (prettier default)
+opt.softtabstop= 4 --  Number of spaces for a TAB in insert mode
+opt.shiftwidth = 4 -- 4 spaces for indent width
 opt.expandtab = false -- expand tab to spaces
 opt.autoindent = true -- copy indent from current line when starting new one
 
@@ -45,5 +73,6 @@ opt.splitbelow = true -- split horizontal window to the bottom
 
 opt.iskeyword:append("-") -- consider string-string as whole word
 
+vim.filetype.add({ extension = { templ = "templ" } })
 require("aminmag.remap")
 require("aminmag.lazy")

@@ -10,7 +10,7 @@ end)
 -- read this: https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/guide/integrate-with-mason-nvim.md
 require('mason').setup({})
 require('mason-lspconfig').setup({
-	ensure_installed = {"golangci_lint_ls", "gopls", "lua_ls", "pylsp", "pylyzer", "pyright", "yamlls", "html", "htmx", "cssls", "rust_analyzer", "zk"},
+	ensure_installed = {"golangci_lint_ls", "gopls", "lua_ls", "pylsp", "pylyzer", "pyright", "yamlls", "html", "htmx", "cssls", "rust_analyzer", "zk", "templ", "clangd", "arduino_language_server", "biome"},
 	handlers = {
 		lsp_zero.default_setup,
 	},
