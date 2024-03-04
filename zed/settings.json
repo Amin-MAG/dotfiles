@@ -1,0 +1,71 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run the `open default settings` command
+// from the command palette or from `Zed` application menu.
+{
+  "languages": {
+    "Go": {
+      "show_copilot_suggestions": true
+    }
+  },
+  "theme": "Rosé Pine Moon",
+  "vim_mode": true,
+  "ui_font_size": 14,
+  "buffer_font_size": 18,
+  "base_keymap": "JetBrains",
+  "autosave": "on_focus_change",
+  "tabs": {
+    "git_status": true
+  },
+  "lsp": {
+    "rust-analyzer": {
+      "initialization_options": {
+        "inlayHints": {
+          "maxLength": null,
+          "lifetimeElisionHints": {
+            "useParameterNames": true,
+            "enable": "skip_trivial"
+          },
+          "closureReturnTypeHints": {
+            "enable": "always"
+          }
+        }
+      }
+    },
+    "golangci_lint_ls": {},
+    "gopls": {
+      "initialization_options": {
+        "hints": {
+          "assignVariableTypes": true,
+          "compositeLiteralFields": true,
+          "compositeLiteralTypes": true,
+          "constantValues": true,
+          "functionTypeParameters": true,
+          "parameterNames": true,
+          "rangeVariableTypes": true
+        }
+      }
+    },
+    "lua_ls": {},
+    "pylsp": {},
+    "pylyzer": {},
+    "pyright": {},
+    "yamlls": {},
+    "html": {},
+    "htmx": {},
+    "cssls": {},
+    "rust_analyzer": {},
+    "zk": {},
+    "templ": {},
+    "clangd": {},
+    "arduino_language_server": {},
+    "biome": {}
+  },
+  "terminal": {
+    "font_size": 14
+  }
+}
