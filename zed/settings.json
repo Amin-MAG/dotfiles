@@ -7,7 +7,11 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "show_copilot_suggestions": false,
   "languages": {
+    "Python": {
+      "show_copilot_suggestions": false
+    },
     "Go": {
       "show_copilot_suggestions": true
     }
@@ -67,5 +71,10 @@
   },
   "terminal": {
     "font_size": 14
+  },
+  "language_overrides": {
+    "Python": {
+      "show_copilot_suggestions": false
+    }
   }
 }
